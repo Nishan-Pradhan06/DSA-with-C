@@ -1,15 +1,16 @@
 #include <stdio.h>
-#include <conio.h>
+
 #define MAX 10
 #define TRUE 1
 #define FALSE 0
+
 struct stack
 {
     int tos;        // top of the stack
     int items[MAX]; // array is used as storehouse of stack
 };
 
-int isEmplty(struct stack *s) // underflow test
+int isEmpty(struct stack *s)
 {
     // return s-> tos =-1;
     if (s->tos == -1)
@@ -21,9 +22,9 @@ int isEmplty(struct stack *s) // underflow test
         return FALSE;
     }
 }
-int isFull(struct stack *s) // overflow test
+
+int isFull(struct stack *s)
 {
-    // return s->tos==MAX-1;
     if (s->tos == MAX - 1)
     {
         return TRUE;
@@ -36,35 +37,28 @@ int isFull(struct stack *s) // overflow test
 
 int push(struct stack *s, int num)
 {
-    if (isFull(s)) // if stack if full then dont push
+    if (isFull(s))
     {
-        return FALSE; // return fa;se tp indicate that push has failed.
+        return FALSE;
     }
     else
     {
         s->tos++;
         s->items[s->tos] = num;
-        return TRUE; // return ture indicating the sucess of push
+        return TRUE;
     }
 }
 
 int pop(struct stack *s)
 {
-    // if (isEmplty(s)) // stack underlow
-    // {
-    //     return TRUE; // pop failed
-    // }
-    // else
-    // {
-    //     s->tos--;
-    //     return TRUE; // pop sucess
-    // }
-
-    // int num = s->items[s->tos];
-    // s->tos--;
-    // return num; //
-
-    return s->items[s->tos--];
+    if (isEmpty(s))
+    {
+        return -1; // Stack underflow
+    }
+    else
+    {
+        return s->items[s->tos--];
+    }
 }
 
 int peek(struct stack *s)
@@ -75,21 +69,21 @@ int peek(struct stack *s)
 void display(struct stack *s)
 {
     int i;
-    if (isEmplty(s))
+    if (isEmpty(s))
     {
         printf("\nStack is Empty.");
     }
     else
     {
         printf("\nStack contains:\n");
-        for (i = s->tos; i >= 0; i++)
+        for (i = s->tos; i >= 0; i--)
         {
-            /* code */
+            printf("%d\n", s->items[i]);
         }
     }
 }
 
-void main()
+int main()
 {
     struct stack s;
     char choice;
@@ -97,44 +91,42 @@ void main()
     s.tos = -1; // empty stack initialized
     do
     {
-        printf("Select an option :\n1.push\n2.pop\n3.List\n4.Exit");
+        printf("\nSelect an option :\n1.push\n2.pop\n3.List\n4.Exit\n");
         fflush(stdin);
-        choice = getche();
+        choice = getchar();
         switch (choice)
         {
         case '1':
-            printf("Enter a number: ");
-            scanf("%d", num);
+            printf("\nEnter a number: ");
+            scanf("%d", &num);
             if (push(&s, num))
             {
-                printf("Item pushed into the stack sucessfully");
+                printf("\nItem pushed into the stack successfully");
             }
             else
             {
-                printf("Stack overflow. Pop some items before push.");
+                printf("\nStack overflow. Pop some items before push.");
             }
             break;
         case '2':
-
-            if (isEmplty(&s))
+            num = pop(&s);
+            if (num == -1)
             {
-                printf("Stack overflow. Pop some items before push.");
+                printf("\nStack underflow. Nothing to pop.");
             }
             else
             {
-                num = peek(&s);
-                pop(&s);
-                printf("%d was poped from the stack", pop(&s));
+                printf("\n%d was popped from the stack", num);
             }
             break;
         case '3':
             display(&s);
             break;
         case '4':
-            printf("Sorry to see you go. ");
-
-            break;
+            printf("\nSorry to see you go. ");
+            return 0;
         default:
+            printf("\nInvalid option. Please select again.");
             break;
         }
     } while (TRUE);
