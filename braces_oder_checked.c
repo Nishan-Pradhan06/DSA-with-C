@@ -45,7 +45,7 @@ int main()
 {
     char exp[Max];
     struct stack s;
-    char symb;
+    char symb, poppedsymb;
     int i = 0, valid = TRUE;
     s.tos = -1;
     printf("Ener your Expression: ");
@@ -65,11 +65,11 @@ int main()
             }
             else
             {
-                // poppedsymb = pop(&s);
-                // if ()
-                // {
-                //     /* code */
-                // }
+                poppedsymb = pop(&s);
+                if (isEmpty)
+                {
+                    /* code */
+                }
             }
         }
     }
