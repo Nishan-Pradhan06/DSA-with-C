@@ -9,7 +9,7 @@ struct stack
 {
     int tos;
     char items[Max];
-};
+} ;
 
 // created empty stack
 int isEmpty(struct stack *s)
