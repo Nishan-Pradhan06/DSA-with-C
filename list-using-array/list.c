@@ -153,7 +153,8 @@ int main()
 
     case 2:
     {
-        printf("Enter the Admin password: ");
+        printf("Enter the Student
+         password: ");
         scanf("%s", stdpass);
         if (strcmp(stdpass, "std") == 0)
         {
