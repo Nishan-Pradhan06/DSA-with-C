@@ -81,5 +81,33 @@ void main()
     }
     display();
 
+    do
+    {
+        printf("Enter your choice\n");
+        printf("1. Insert\n2. Remove\n3. Display\n4. Exit");
+        // fflush(stdin);
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1: 
+            
+            break;
+        case 2: 
+            
+            break;
+        case 3: 
+            
+            break;
+        case 4:
+            exit(0);
+            break;
+        
+        default:
+        printf("Invlaid  Choice \n");
+            break;
+        }
+    } while (1);
+    
+
     getch();
 }
