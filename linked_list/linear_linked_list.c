@@ -31,8 +31,8 @@ struct node *getnode(int n)
         getch();
         exit(0);
     }
-    ptrnew->data = n; 
-    ptrnew->next = NULL;
+    ptrnew->data = n; //ser data into newly allocared node
+    ptrnew->next = NULL; //set next field to null
     return ptrnew;
 };
 // malloc le yo sruct node lai kati byte chahinxa teti byte resever garxa. ra tyo use garna pointer dinxa.. ra yaslai typecasting (struct node *) gareko xa
@@ -79,35 +79,33 @@ void main()
     {
         insertLast(getnode(i + 1));
     }
-    display();
 
     do
     {
-        printf("Enter your choice\n");
+        printf("Enter your choice.\n");
         printf("1. Insert\n2. Remove\n3. Display\n4. Exit");
         // fflush(stdin);
         scanf("%d", &choice);
         switch (choice)
         {
-        case 1: 
-            
+        case 1:
+
             break;
-        case 2: 
-            
+        case 2:
+
             break;
-        case 3: 
-            
+        case 3:
+            display();
             break;
         case 4:
             exit(0);
             break;
-        
+
         default:
-        printf("Invlaid  Choice \n");
+            printf("Invlaid  Choice \n");
             break;
         }
     } while (1);
-    
 
     getch();
 }

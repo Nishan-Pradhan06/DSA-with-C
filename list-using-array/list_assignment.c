@@ -12,6 +12,7 @@ typedef struct student
 {
     char name[MAX_NAME_LENGTH];
     int id;
+    char faculty[MAX_NAME_LENGTH];
 } Student;
 
 // structure for list of students
@@ -21,37 +22,47 @@ typedef struct list
     int count;
 } List;
 
+//...............function for empty or full.................................
 int isFull(List *lst);  // check weather list is full
 int isEmpty(List *lst); // chech if list is empty
 
-// // insert functions
+//.........................insert functions.................................
 int insertFront(List *lst, Student std); // insert from top
 int insertEnd(List *lst, Student std);   // insert from end
 int afterItem(List *lst);                // insert after items
 int beforeItem(List *lst);               // insert before items
 
-// // remove functions
+
+//...................... remove functions...................................
 int removeFront(List *lst);                   // remove form top
 int removeLast(List *lst);                    // remove from last
 int removeAny(List *lst, int id, char *name); // remove any
+int saveToDisk(List *lst);
+int readFromDisk(List *lst);
 
-// search functions
+//......................search functions...................................
 int searchList(List *lst, int id); // search list from id
 
-// display list
+//............................display list..................................
 void displayList(List *lst);
 
-// // check list is full or not
+
+//..........................check list is full or not.......................
 int isFull(List *lst)
 {
     return lst->count == MAX_STUDENT;
 }
-// // check list if empty  or not
+
+
+//....................... check list if empty  or not............................
 int isEmpty(List *lst)
 {
     return lst->count == 0;
 }
-// insert list from front
+
+
+
+// ...........................insert list from front.............................
 int insertFront(List *lst, Student std)
 {
     if (isFull(lst))
@@ -63,6 +74,8 @@ int insertFront(List *lst, Student std)
     scanf("%d", &std.id);
     printf("\nEnter Student Name: ");
     scanf("%s", std.name);
+    printf("\nEnter Student Faculty: ");
+    scanf("%s", std.faculty);
     int i;
     for (i = lst->count; i > 0; i--)
     {
@@ -72,7 +85,9 @@ int insertFront(List *lst, Student std)
     lst->count++;
     return TRUE;
 }
-// insert list from End
+
+
+//................................. insert list from End............................
 int insertEnd(List *lst, Student std)
 {
     if (isFull(lst))
@@ -84,11 +99,13 @@ int insertEnd(List *lst, Student std)
     scanf("%d", &std.id);
     printf("\nEnter Student Name: ");
     scanf("%s", std.name);
+    printf("\nEnter Student Faculty: ");
+    scanf("%s", std.faculty);
     lst->students[lst->count] = std;
     lst->count++;
     return TRUE;
 }
-// remove front list
+// ....................................remove front list.........................
 int removeFront(List *lst)
 {
     int i;
@@ -106,6 +123,8 @@ int removeFront(List *lst)
     printf("\nStudent Removed:\n\nID\t\t Name\n%d\t\t%s", lst->students[lst->count].id, lst->students[lst->count].name);
     return TRUE;
 }
+
+//...........................remove from end.......................................
 int removeEnd(List *lst)
 {
     if (isEmpty(lst))
@@ -117,6 +136,8 @@ int removeEnd(List *lst)
     printf("\nStudent Removed:\n\nID\t\t Name\n%d\t\t%s", lst->students[lst->count].id, lst->students[lst->count].name);
     return TRUE;
 }
+
+//..........................remove any list with id ...............................
 int removeAny(List *lst, int id, char *name)
 {
     int i;
@@ -136,7 +157,10 @@ int removeAny(List *lst, int id, char *name)
         return TRUE;
     }
 }
-// display all the list of  students
+
+
+
+//................display all the list of  students.................................
 void displayList(List *lst)
 {
     if (isEmpty(lst))
@@ -146,13 +170,16 @@ void displayList(List *lst)
     }
     printf("\n.................Students List..................\n");
     printf("\n................................................");
-    printf("\nID\t\t Name\n");
+    printf("\nID\t\t Name\t\tFaculty\n");
     for (int i = 0; i < lst->count; i++)
     {
-        printf("%d\t\t%s\n", lst->students[i].id, lst->students[i].name); // display name  and ID of each student in the list.
+        printf("%d\t\t%s\t\t%s\n", lst->students[i].id, lst->students[i].name, lst->students[i].faculty); // display name  and ID of each student in the list.
     }
+    printf(".....................................................");
 }
-// search list
+
+
+//.......................search list................................
 int searchList(List *lst, int id)
 {
     if (isEmpty(lst))
@@ -170,6 +197,9 @@ int searchList(List *lst, int id)
     printf("\nStudent with ID %d not found.\n", id);
     return FALSE;
 }
+
+
+//Main functions
 int main()
 {
     int id;
