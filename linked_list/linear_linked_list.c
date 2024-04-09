@@ -6,11 +6,6 @@
 #include <stdlib.h>
 struct node *header = NULL; // define empty list..
 //
-struct node
-{
-    struct product data; // product struct ko data..
-    struct node *next;   // self referencial structure../ yo node ko aafhani address hold garne field poiner xa./ arko data item lai point garne
-};
 
 //.....product ko struct..data varibale haru........
 // struct product
@@ -19,6 +14,12 @@ struct node
 //     char name[50];
 //     float price;
 // };
+
+struct node
+{
+    struct product data; // product struct ko data..
+    struct node *next;   // self referencial structure../ yo node ko aafhani address hold garne field poiner xa./ arko data item lai point garne
+};
 
 // hamile deko node ko adar ma.. chaine ya bata thahunxa
 struct node *getnode(int n)
@@ -31,8 +32,8 @@ struct node *getnode(int n)
         getch();
         exit(0);
     }
-    ptrnew->data = n; //ser data into newly allocared node
-    ptrnew->next = NULL; //set next field to null
+    ptrnew->data = n;    // ser data into newly allocared node
+    ptrnew->next = NULL; // set next field to null
     return ptrnew;
 };
 // malloc le yo sruct node lai kati byte chahinxa teti byte resever garxa. ra tyo use garna pointer dinxa.. ra yaslai typecasting (struct node *) gareko xa
@@ -54,18 +55,36 @@ void insertLast(struct node *ptrnew)
     }
 }
 
+// void display()
+// {
+//     struct node *ptrthis = header;
+//     if (header == NULL)
+//     {
+//         printf("List is Empty..");
+//     }
+//     else
+//     {
+//         printf("List Contains: \n");
+//         while (ptrthis !=NULL)
+//             printf("%d", ptrthis);
+//     }
+// }
 void display()
 {
     struct node *ptrthis = header;
     if (header == NULL)
     {
-        printf("List is Empty..");
+        printf("List is Empty..\n");
     }
     else
     {
         printf("List Contains: \n");
-        while (ptrthis !-NULL)
-            printf("%d", ptrthis);
+        while (ptrthis != NULL)
+        {
+            printf("%d ", ptrthis->data); // Print the data of the current node
+            ptrthis = ptrthis->next;      // Move to the next node
+        }
+        printf("\n"); // Print a newline after printing all nodes
     }
 }
 
