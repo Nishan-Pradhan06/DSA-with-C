@@ -29,16 +29,11 @@ int isEmpty(List *lst); // chech if list is empty
 //.........................insert functions.................................
 int insertFront(List *lst, Student std); // insert from top
 int insertEnd(List *lst, Student std);   // insert from end
-int afterItem(List *lst);                // insert after items
-int beforeItem(List *lst);               // insert before items
-
 
 //...................... remove functions...................................
 int removeFront(List *lst);                   // remove form top
 int removeLast(List *lst);                    // remove from last
 int removeAny(List *lst, int id, char *name); // remove any
-int saveToDisk(List *lst);
-int readFromDisk(List *lst);
 
 //......................search functions...................................
 int searchList(List *lst, int id); // search list from id
@@ -46,21 +41,17 @@ int searchList(List *lst, int id); // search list from id
 //............................display list..................................
 void displayList(List *lst);
 
-
 //..........................check list is full or not.......................
 int isFull(List *lst)
 {
     return lst->count == MAX_STUDENT;
 }
 
-
 //....................... check list if empty  or not............................
 int isEmpty(List *lst)
 {
     return lst->count == 0;
 }
-
-
 
 // ...........................insert list from front.............................
 int insertFront(List *lst, Student std)
@@ -86,7 +77,6 @@ int insertFront(List *lst, Student std)
     return TRUE;
 }
 
-
 //................................. insert list from End............................
 int insertEnd(List *lst, Student std)
 {
@@ -105,6 +95,7 @@ int insertEnd(List *lst, Student std)
     lst->count++;
     return TRUE;
 }
+
 // ....................................remove front list.........................
 int removeFront(List *lst)
 {
@@ -158,8 +149,6 @@ int removeAny(List *lst, int id, char *name)
     }
 }
 
-
-
 //................display all the list of  students.................................
 void displayList(List *lst)
 {
@@ -177,7 +166,6 @@ void displayList(List *lst)
     }
     printf(".....................................................");
 }
-
 
 //.......................search list................................
 int searchList(List *lst, int id)
@@ -198,8 +186,7 @@ int searchList(List *lst, int id)
     return FALSE;
 }
 
-
-//Main functions
+// Main functions
 int main()
 {
     int id;
@@ -212,7 +199,7 @@ int main()
     while (1)
     {
         printf("\n\nStudent List  Program\n");
-        printf("1: Insert Front\n2: Insert End\n3: Insert After Items\n4: Insert Before Items\n5: Remove Front\n6: Remove Last\n7: Remove Any\n8: Display List\n9: Search Lists\n10: Exit Program");
+        printf("1: Insert Front\n2: Insert End\n3: Remove Front\n4: Remove Last\n5: Remove Any\n6: Display List\n7: Search Lists\n8: Exit Program");
         printf("\nEnter Your Choice:  ");
         scanf("%d", &choice);
         switch (choice)
@@ -226,29 +213,25 @@ int main()
             printf("\n.....Student List Insert End Successfully......\n\n");
             break;
         case 3:
-            break;
-        case 4:
-            break;
-        case 5:
             removeFront(&studentList); // remove list from front
             break;
-        case 6:
+        case 4:
             removeEnd(&studentList); // remove list from last
             break;
-        case 7:
+        case 5:
             printf("Enter Student ID to Removed: ");
             scanf("%d", &id);
             removeAny(&studentList, id, name);
             break;
-        case 8:
+        case 6:
             displayList(&studentList); // dispaly all the list
             break;
-        case 9:
+        case 7:
             printf("Enter Student ID to Search: ");
             scanf("%d", &id);
             searchList(&studentList, id); // search list
             break;
-        case 10:
+        case 8:
             printf("\nExiting the program...\n");
             return 0;
         default:
