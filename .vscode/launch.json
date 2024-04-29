@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "f:/DSA",
-      "program": "f:/DSA/build/Debug/outDebug",
+      "cwd": "f:/DSA/circular_list",
+      "program": "f:/DSA/circular_list/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

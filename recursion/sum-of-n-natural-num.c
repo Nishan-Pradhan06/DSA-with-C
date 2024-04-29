@@ -1,7 +1,7 @@
 // wap to calcualte the sum of n number using recursion
 #include <stdio.h>
 #include <conio.h>
-// iterative solution
+iterative solution
 int sum1(int n)
 {
     int s = 0, i;
@@ -32,6 +32,6 @@ void main()
     int num;
     printf("Enter a positive integer: ");
     scanf("%d", &num);
-    printf("Sum of %d number is:%d,", n, sum(n));
+    printf("Sum of %d number is:%d", num, sum(num));
     getch();
 }
