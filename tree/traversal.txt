@@ -1,0 +1,7 @@
+pre-order--> root --> left sub-tree --> right-subtree
+
+in-order --> left-subtree--> root --> right-subtree
+
+post-order --> left-subtree -->right-subtree -->root
+
+169
